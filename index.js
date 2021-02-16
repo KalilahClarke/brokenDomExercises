@@ -35,37 +35,36 @@ const sum = (arr) => {
     return sum; 
 }
 const average = (arr) => {
-    arr = [1, 2, 3];
-    let sumOfNums = sums(arr) 
+    let sumOfNums = sum(arr) 
     return sumOfNums / arr.length; 
 }
 
 const onlyOdds = arr => {
-     arr.filter(num => num % 3 === 1)
+     arr.filter(num => num % 2 === 1)
 }
 
 const favoriteNumbers = () => {
-    let list = Number(document.querySelector("#favorite-numbers < li").value);
+    let list = Number(document.querySelectorAll("#favorite-numbers li").value);
     let arr = [];
     list.forEach((listItem) => {
-        arr.push(listItem.textContent)
+        arr.push(Number(listItem.textContent))
     })
     const sum = sum(arr);
-    const averageOfNums = average();
+    const averageOfNums = average(arr);
     const onlyOddsOfNums = onlyOdds(arr);
 
-    const sumOfFav = Number(document.querySelector("#sum-of-favorite-nums"));
+    const sumOfFav = document.querySelector("#sum-of-favorite-nums");
     sumOfFav.textContent += sumOfNums; 
 
     const aveOfFav = document.querySelector("#average-of-favorite-nums");
     aveOfFav.textContent += averageOfNums; 
 
-    var oddList = document.querySelector("#is-palindrome-p");
+    var oddList = document.querySelector("#list-of-odd-favorite-nums");
     
-    const li = document.createElement("h1");
-    onlyOddsOfNums.each((odd) => {
-      li.inerText = odd;
-      oddList.removeChild(li);
+    const li = document.createElement("li");
+    onlyOddsOfNums.forEach(odd => {
+      li.innerText = odd;
+      oddList.appendChild(li);
     });
 }
 
