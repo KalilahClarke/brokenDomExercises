@@ -4,26 +4,27 @@ const disemvowel = () => {
     const p = document.getElementById("disemvowel-string");
     const str = el.value;
     let output = "";
-    const vowels = "aeiou"; 
-    for(const char in str) {
-        if(!vowels.includes(char.toUpperCase())) {
+    const vowels = "aeiouAEIOU"; 
+    for(const char of str) {
+        if(!vowels.includes(char)) {
             output += char;
-            debugger
         }
     }
     p.textContent = output;
 }
 
 const isPalindrome = () => {
-    const str = document.querySelector("#is-palindrome-input");
-    const p = document.querySelectorAll("#is-palindrome-p");
-    let result = "true"; 
-    for(let i = 0; i < str; i++) {
+    const str = document.querySelector("#is-palindrome-input").value;
+    const p = document.querySelector("#is-palindrome-p");
+    let result = false; 
+    for(let i = 0; i < str.length; i++) {
         if(str[i] === str[str.length - i - 1]) {
-            result = "false"
+            result = true
+        } else {
+            result = false
         }
     }
-    result = p.textContent;
+    p.textContent = result;
 }
 const sum = (arr) => {
     let sum = 0; 
