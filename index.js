@@ -26,58 +26,64 @@ const isPalindrome = () => {
     }
     p.textContent = result;
 }
-const sum = (arr) => {
+let sum = (arr) => {
     let sum = 0; 
-    for(let i = 0; i <= arr.length; i++) {
+    for(let i = 0; i < arr.length; i++) {
         const num = arr[i];
         sum += num
     }
     return sum; 
 }
-const average = (arr) => {
+let average = (arr) => {
     let sumOfNums = sum(arr) 
     return sumOfNums / arr.length; 
 }
 
-const onlyOdds = arr => {
-     arr.filter(num => num % 2 === 1)
+let onlyOdds = arr => {
+     return arr.filter(num => num % 2 === 1)
 }
 
 const favoriteNumbers = () => {
-    let list = Number(document.querySelectorAll("#favorite-numbers li").value);
+    let list = document.querySelectorAll("#favorite-numbers li");
     let arr = [];
     list.forEach((listItem) => {
         arr.push(Number(listItem.textContent))
     })
-    const sum = sum(arr);
+   
+    const sumOfNums = sum(arr);
     const averageOfNums = average(arr);
     const onlyOddsOfNums = onlyOdds(arr);
 
+
     const sumOfFav = document.querySelector("#sum-of-favorite-nums");
     sumOfFav.textContent += sumOfNums; 
+    
 
     const aveOfFav = document.querySelector("#average-of-favorite-nums");
     aveOfFav.textContent += averageOfNums; 
 
-    var oddList = document.querySelector("#list-of-odd-favorite-nums");
+    const oddList = document.querySelector("#list-of-odd-favorite-nums");
     
-    const li = document.createElement("li");
     onlyOddsOfNums.forEach(odd => {
-      li.innerText = odd;
+      let li = document.createElement("li");
+      li.textContent = odd;
       oddList.appendChild(li);
     });
+    
 }
 
 favoriteNumbers();
 
 const incrementCount = () => {
-    const countr = Number(document.querySelector("#click-count"));
-    counter.textContent = counter.textContent + 1;
+    let counter = document.querySelector("#click-count");
+    counter.textContent++
 }
+
+
 
 const reset = () => {
     const counter = document.querySelector("#click-count");
-    counter.displayContent = 0;
+    counter.textContent = 0;
 }
 
 const addItem = () => {
