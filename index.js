@@ -87,18 +87,18 @@ const reset = () => {
 }
 
 const addItem = () => {
-    const shoppingList = document.querySelector("ul");
-    const input = document.querySelector(".add-item")
-    const item = input;
+    const shoppingList = document.querySelector(".shopping-list");
+    const input = document.querySelector("#add-item")
+    //const item = input;
     const listItem = document.createElement("li");
-    listItem.textContent = item;
+    listItem.textContent = input.value;
     shoppingList.appendChild(listItem)
-    input.value = "Empty";
+    //input.value = "Empty";
 }
 
 const killButton = () => {
     const button = document.querySelector("#kill-button");
-    button.removeChild(button)
+    button.parentNode.removeChild(button)
 
     const header = document.querySelector("#kill-button-header");
     header.innerText = "Yay you were victorious!"
